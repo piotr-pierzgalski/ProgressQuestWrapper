@@ -1,0 +1,12 @@
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\pq.exe
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.csprojResolveAssemblyReference.cache
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.Properties.Resources.resources
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.WrapperForm.resources
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.csproj.GenerateResource.Cache
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.exe
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.pdb
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\Fithvael_2.0 [Spoltog].bak
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\Fithvael_2.0 [Spoltog].pq
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.exe.config
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.exe
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.pdb
