@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WrapperForm));
             this.wrapperPanel = new System.Windows.Forms.Panel();
             this.autostartLabel = new System.Windows.Forms.Label();
             this.autostartStatusCheckbox = new System.Windows.Forms.CheckBox();
             this.syncStatusLabel = new System.Windows.Forms.Label();
             this.syncButton = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // wrapperPanel
@@ -87,6 +90,13 @@
             this.syncButton.UseVisualStyleBackColor = true;
             this.syncButton.Click += new System.EventHandler(this.syncButton_Click);
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "notifyIcon";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
+            // 
             // WrapperForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +110,7 @@
             this.Name = "WrapperForm";
             this.Text = "ProgressQuest Wrapper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WrapperForm_FormClosing);
+            this.Resize += new System.EventHandler(this.WrapperForm_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,6 +123,7 @@
         private System.Windows.Forms.CheckBox autostartStatusCheckbox;
         private System.Windows.Forms.Label syncStatusLabel;
         private System.Windows.Forms.Button syncButton;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 
