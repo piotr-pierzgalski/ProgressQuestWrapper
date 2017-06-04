@@ -18,6 +18,16 @@ namespace ProgressQuestWrapper
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new WrapperForm());
+
+            Application.ApplicationExit += OnApplicationExit;
+            AppDomain.CurrentDomain.ProcessExit += OnApplicationExit;
+        }
+
+        static void OnApplicationExit(object sender, EventArgs eventArgs)
+        {
+            DropboxUpload du = new DropboxUpload();
+
+            du.UploadFile().Wait();
         }
     }
 }

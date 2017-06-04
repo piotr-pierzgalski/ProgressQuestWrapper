@@ -11,11 +11,21 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.IO;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v2;
+using Google.Apis.Drive.v2.Data;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
+using Google.Apis.Upload;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ProgressQuestWrapper
 {
     public partial class WrapperForm : Form
     {
+
+
         RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
         private IntPtr progressQuestWindowHandle;
         private const int SW_HIDE = 0;
@@ -119,7 +129,9 @@ namespace ProgressQuestWrapper
 
         private void syncButton_Click(object sender, EventArgs e)
         {
-
+            //GoogleDriveUpload.uploadFile();
+            DropboxUpload du = new DropboxUpload();
+            du.UploadFile();
         }
 
         private void wrapperPanel_SizeChanged(object sender, EventArgs e)
