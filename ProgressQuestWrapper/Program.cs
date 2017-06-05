@@ -17,6 +17,8 @@ namespace ProgressQuestWrapper
             string[] args = Environment.GetCommandLineArgs();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DropboxUpload du = new DropboxUpload();
+            du.Download().Wait();
             Application.Run(new WrapperForm());
 
             Application.ApplicationExit += OnApplicationExit;

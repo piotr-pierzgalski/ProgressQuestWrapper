@@ -11,19 +11,13 @@ namespace ProgressQuestWrapper
 {
     class DropboxUpload
     {
-        static async Task Run()
-        {
-            using (var dbx = new DropboxClient("TzSv4tHC040AAAAAAAABeD9kOiMFez3PVf_YX5pMnHowsmNtXVlUKRNFQgGmXX98"))
-            {
-                var full = await dbx.Users.GetCurrentAccountAsync();
-                Console.WriteLine("{0} - {1}", full.Name.DisplayName, full.Email);
-            }
-        }
+        string _uploadFile = "ProgressQuest/Fithvael_2.0 [Spoltog].pq";
+        DropboxClient dbx = new DropboxClient("TzSv4tHC040AAAAAAAABeD9kOiMFez3PVf_YX5pMnHowsmNtXVlUKRNFQgGmXX98");
 
         public async Task UploadFile()
         {
-            var dbx = new DropboxClient("TzSv4tHC040AAAAAAAABeD9kOiMFez3PVf_YX5pMnHowsmNtXVlUKRNFQgGmXX98");
-            string _uploadFile = "ProgressQuest/Fithvael_2.0 [Spoltog].pq";
+            
+            
 
             var uploadStream = new System.IO.FileStream(_uploadFile,
                                             System.IO.FileMode.Open,
@@ -35,11 +29,11 @@ namespace ProgressQuestWrapper
             //Task.Run(() => Upload(dbx, "/Apps/ProgressQuestWrapper", _uploadFile, ms));
         }
 
-        async Task Download(DropboxClient dbx, string folder, string file)
+        public async Task Download()
         {
-            using (var response = await dbx.Files.DownloadAsync(folder + "/" + file))
+            using (var response = await dbx.Files.DownloadAsync("/Apps/ProgressQuestWrapper" + "/" + _uploadFile))
             {
-                Console.WriteLine(await response.GetContentAsStringAsync());
+                System.IO.File.WriteAllBytes(_uploadFile, await response.GetContentAsByteArrayAsync());
             }
         }
 

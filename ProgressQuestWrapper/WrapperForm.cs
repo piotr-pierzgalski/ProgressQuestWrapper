@@ -25,7 +25,6 @@ namespace ProgressQuestWrapper
     public partial class WrapperForm : Form
     {
 
-
         RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
         private IntPtr progressQuestWindowHandle;
         private const int SW_HIDE = 0;
@@ -37,6 +36,7 @@ namespace ProgressQuestWrapper
             InitializeComponent();
 
             ShowInTaskbar = false;
+            this.Visible = false;
 
             Process p = new Process();
             p.StartInfo = new ProcessStartInfo() { FileName = "ProgressQuest\\Fithvael_2.0 [Spoltog].pq" };
@@ -50,7 +50,6 @@ namespace ProgressQuestWrapper
                 MessageBox.Show("ERROR");
                 return;
             }
-
 
 
             this.Height = 700;
@@ -67,6 +66,8 @@ namespace ProgressQuestWrapper
             {
                 autostartStatusCheckbox.Checked = true;
             }
+            WindowState = FormWindowState.Minimized;
+            this.Visible = true;
         }
 
 

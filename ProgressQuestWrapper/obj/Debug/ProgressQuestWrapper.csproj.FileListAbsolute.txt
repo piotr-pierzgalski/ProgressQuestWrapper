@@ -15,8 +15,6 @@ C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Pr
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\license.txt
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\pq.html
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\client_secret.json
-C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\Fithvael_2.0 [Spoltog].bak
-C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\Fithvael_2.0 [Spoltog].pq
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.exe.config
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.exe
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.pdb
@@ -39,4 +37,3 @@ C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\Pr
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.pdb
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Dropbox.Api.dll
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Dropbox.Api.xml
-C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.csprojResolveAssemblyReference.cache
