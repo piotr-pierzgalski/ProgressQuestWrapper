@@ -68,6 +68,12 @@ namespace ProgressQuestWrapper
             }
             WindowState = FormWindowState.Minimized;
             this.Visible = true;
+
+            var timer = new System.Threading.Timer(
+                e => (new DropboxUpload()).UploadFile(),
+                null,
+                TimeSpan.Zero,
+                TimeSpan.FromMinutes(10));
         }
 
 
