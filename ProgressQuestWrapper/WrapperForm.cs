@@ -25,15 +25,20 @@ namespace ProgressQuestWrapper
     public partial class WrapperForm : Form
     {
 
-        RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        RegistryKey rkApp;
         private IntPtr progressQuestWindowHandle;
         private const int SW_HIDE = 0;
         private const int SW_SHOWNORMAL = 1;
         private const int SW_SHOWMINIMIZED = 2;
         private const int SW_SHOWMAXIMIZED = 3;
+        int saveAttempts = 0;
+        string oldHash = string.Empty;
         public WrapperForm()
         {
             InitializeComponent();
+
+            var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+            rkApp = baseKey.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
             ShowInTaskbar = false;
             this.Visible = false;
@@ -58,24 +63,38 @@ namespace ProgressQuestWrapper
             SetParent(progressQuestWindowHandle, wrapperPanel.Handle);
             MoveWindow(progressQuestWindowHandle, 1, 1, wrapperPanel.Width - 7, wrapperPanel.Height - 7, true);
 
-            if (rkApp != null && rkApp.GetValue("ProgressQuestWrapper") == null)
-            {
-                autostartStatusCheckbox.Checked = false;
-            }
-            else
+
+
+            //if (rkApp != null && rkApp.GetValue("ProgressQuestWrapper") == null)
+            //{
+            //    autostartStatusCheckbox.Checked = false;
+            //}
+            //else
+            //{
+            //    autostartStatusCheckbox.Checked = true;
+            //}
+            string linkName = "ProgressQuestWrapperLink";
+            string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            if (System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
             {
                 autostartStatusCheckbox.Checked = true;
             }
+
+
+
             WindowState = FormWindowState.Minimized;
             this.Visible = true;
 
-            var timer = new System.Threading.Timer(
-                e => (new DropboxUpload()).UploadFile(),
-                null,
-                TimeSpan.Zero,
-                TimeSpan.FromMinutes(10));
-        }
+            //var timer = new System.Threading.Timer(
+            //    e => (new DropboxUpload()).UploadFile(),
+            //    null,
+            //    TimeSpan.Zero,
+            //    TimeSpan.FromMinutes(10));
 
+            var fileMetadata = (new DropboxUpload()).UploadFileNotAsync();
+            status2.Text = "Current server state: " + fileMetadata.ClientModified.ToLocalTime().ToLongTimeString();
+            oldHash = fileMetadata.ContentHash;
+        }
 
         [DllImport("user32.dll", EntryPoint = "FindWindow")]
         public static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
@@ -121,11 +140,13 @@ namespace ProgressQuestWrapper
         {
             if (autostartStatusCheckbox.Checked)
             {
-                rkApp.SetValue("ProgressQuestWrapper", Application.ExecutablePath);
+                //rkApp.SetValue("ProgressQuestWrapper", Application.ExecutablePath);
+                appShortcutToStartup();
             }
             else
             {
-                rkApp.DeleteValue("ProgressQuestWrapper", false);
+                //rkApp.DeleteValue("ProgressQuestWrapper", false);
+                delappShortcutFromStartup();
             }
         }
 
@@ -162,6 +183,66 @@ namespace ProgressQuestWrapper
             this.Show();
             notifyIcon.Visible = false;
             WindowState = FormWindowState.Normal;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            status1.Text = "Now Saving...";
+
+            var fileMetadata = (new DropboxUpload()).UploadFileNotAsync();
+            var newData = fileMetadata.ClientModified.ToLocalTime().ToLongTimeString();
+            var newHash = fileMetadata.ContentHash;
+            if (oldHash.Equals(string.Empty))
+            {
+                status2.Text = "Current server state: " + newData;
+                oldHash = newHash;
+            }
+            else if (oldHash.Equals(newHash))
+            {
+                status2.Text = "Current server state: " + newData;
+                status3.Text = "Save attempts: " + (++saveAttempts).ToString();
+            }
+            else
+            {
+                status2.Text = "Current server state: " + newData;
+                status3.Text = "Save attempts: 0";
+                saveAttempts = 0;
+                oldHash = newHash;
+            }
+
+            status1.Text = string.Empty;
+        }
+
+
+
+
+        private void appShortcutToStartup()
+        {
+            string linkName = "ProgressQuestWrapperLink";
+            string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            if (!System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
+            {
+                using (StreamWriter writer = new StreamWriter(startDir + "\\" + linkName + ".url"))
+                {
+                    string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    writer.WriteLine("[InternetShortcut]");
+                    writer.WriteLine("URL=file:///" + app);
+                    writer.WriteLine("IconIndex=0");
+                    string icon = Application.StartupPath + "\\backup (3).ico";
+                    writer.WriteLine("IconFile=" + icon);
+                    writer.Flush();
+                }
+            }
+        }
+
+        private void delappShortcutFromStartup()
+        {
+            string linkName = "ProgressQuestWrapperLink";
+            string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            if (System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
+            {
+                System.IO.File.Delete(startDir + "\\" + linkName + ".url");
+            }
         }
     }
 }

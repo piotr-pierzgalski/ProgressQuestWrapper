@@ -33,9 +33,12 @@
             this.wrapperPanel = new System.Windows.Forms.Panel();
             this.autostartLabel = new System.Windows.Forms.Label();
             this.autostartStatusCheckbox = new System.Windows.Forms.CheckBox();
-            this.syncStatusLabel = new System.Windows.Forms.Label();
+            this.status2 = new System.Windows.Forms.Label();
             this.syncButton = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.status1 = new System.Windows.Forms.Label();
+            this.status3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // wrapperPanel
@@ -71,18 +74,17 @@
             this.autostartStatusCheckbox.UseVisualStyleBackColor = true;
             this.autostartStatusCheckbox.CheckedChanged += new System.EventHandler(this.autostartStatusCheckbox_CheckedChanged);
             // 
-            // syncStatusLabel
+            // status2
             // 
-            this.syncStatusLabel.AutoSize = true;
-            this.syncStatusLabel.Location = new System.Drawing.Point(313, 17);
-            this.syncStatusLabel.Name = "syncStatusLabel";
-            this.syncStatusLabel.Size = new System.Drawing.Size(37, 13);
-            this.syncStatusLabel.TabIndex = 3;
-            this.syncStatusLabel.Text = "Status";
+            this.status2.AutoSize = true;
+            this.status2.Location = new System.Drawing.Point(311, 22);
+            this.status2.Name = "status2";
+            this.status2.Size = new System.Drawing.Size(0, 13);
+            this.status2.TabIndex = 3;
             // 
             // syncButton
             // 
-            this.syncButton.Location = new System.Drawing.Point(232, 12);
+            this.syncButton.Location = new System.Drawing.Point(154, 12);
             this.syncButton.Name = "syncButton";
             this.syncButton.Size = new System.Drawing.Size(75, 23);
             this.syncButton.TabIndex = 4;
@@ -97,13 +99,37 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 600000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // status1
+            // 
+            this.status1.AutoSize = true;
+            this.status1.Location = new System.Drawing.Point(313, 4);
+            this.status1.Name = "status1";
+            this.status1.Size = new System.Drawing.Size(0, 13);
+            this.status1.TabIndex = 5;
+            // 
+            // status3
+            // 
+            this.status3.AutoSize = true;
+            this.status3.Location = new System.Drawing.Point(313, 41);
+            this.status3.Name = "status3";
+            this.status3.Size = new System.Drawing.Size(0, 13);
+            this.status3.TabIndex = 6;
+            // 
             // WrapperForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 293);
+            this.Controls.Add(this.status3);
+            this.Controls.Add(this.status1);
             this.Controls.Add(this.syncButton);
-            this.Controls.Add(this.syncStatusLabel);
+            this.Controls.Add(this.status2);
             this.Controls.Add(this.autostartStatusCheckbox);
             this.Controls.Add(this.autostartLabel);
             this.Controls.Add(this.wrapperPanel);
@@ -121,9 +147,12 @@
         private System.Windows.Forms.Panel wrapperPanel;
         private System.Windows.Forms.Label autostartLabel;
         private System.Windows.Forms.CheckBox autostartStatusCheckbox;
-        private System.Windows.Forms.Label syncStatusLabel;
+        private System.Windows.Forms.Label status2;
         private System.Windows.Forms.Button syncButton;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label status1;
+        private System.Windows.Forms.Label status3;
     }
 }
 
