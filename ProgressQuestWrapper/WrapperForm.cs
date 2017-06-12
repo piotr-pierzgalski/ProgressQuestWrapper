@@ -44,7 +44,10 @@ namespace ProgressQuestWrapper
             this.Visible = false;
 
             Process p = new Process();
-            p.StartInfo = new ProcessStartInfo() { FileName = "ProgressQuest\\Fithvael_2.0 [Spoltog].pq" };
+            p.StartInfo = new ProcessStartInfo()
+            {
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgressQuest\\Fithvael_2.0 [Spoltog].pq")//"ProgressQuest\\Fithvael_2.0 [Spoltog].pq"
+            };
             p.Start();
             p.WaitForInputIdle();
             progressQuestWindowHandle = FindWindowByCaption(IntPtr.Zero, "ProgressQuest - Fithvael_2.0 [Spoltog]");
@@ -65,20 +68,20 @@ namespace ProgressQuestWrapper
 
 
 
-            //if (rkApp != null && rkApp.GetValue("ProgressQuestWrapper") == null)
-            //{
-            //    autostartStatusCheckbox.Checked = false;
-            //}
-            //else
-            //{
-            //    autostartStatusCheckbox.Checked = true;
-            //}
-            string linkName = "ProgressQuestWrapperLink";
-            string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-            if (System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
+            if (rkApp != null && rkApp.GetValue("ProgressQuestWrapper") == null)
+            {
+                autostartStatusCheckbox.Checked = false;
+            }
+            else
             {
                 autostartStatusCheckbox.Checked = true;
             }
+            //string linkName = "ProgressQuestWrapperLink";
+            //string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            //if (System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
+            //{
+            //    autostartStatusCheckbox.Checked = true;
+            //}
 
 
 
@@ -140,13 +143,13 @@ namespace ProgressQuestWrapper
         {
             if (autostartStatusCheckbox.Checked)
             {
-                //rkApp.SetValue("ProgressQuestWrapper", Application.ExecutablePath);
-                appShortcutToStartup();
+                rkApp.SetValue("ProgressQuestWrapper", Application.ExecutablePath);
+                //appShortcutToStartup();
             }
             else
             {
-                //rkApp.DeleteValue("ProgressQuestWrapper", false);
-                delappShortcutFromStartup();
+                rkApp.DeleteValue("ProgressQuestWrapper", false);
+                //delappShortcutFromStartup();
             }
         }
 
@@ -216,33 +219,33 @@ namespace ProgressQuestWrapper
 
 
 
-        private void appShortcutToStartup()
-        {
-            string linkName = "ProgressQuestWrapperLink";
-            string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-            if (!System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
-            {
-                using (StreamWriter writer = new StreamWriter(startDir + "\\" + linkName + ".url"))
-                {
-                    string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                    writer.WriteLine("[InternetShortcut]");
-                    writer.WriteLine("URL=file:///" + app);
-                    writer.WriteLine("IconIndex=0");
-                    string icon = Application.StartupPath + "\\backup (3).ico";
-                    writer.WriteLine("IconFile=" + icon);
-                    writer.Flush();
-                }
-            }
-        }
+        //private void appShortcutToStartup()
+        //{
+        //    string linkName = "ProgressQuestWrapperLink";
+        //    string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+        //    if (!System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
+        //    {
+        //        using (StreamWriter writer = new StreamWriter(startDir + "\\" + linkName + ".url"))
+        //        {
+        //            string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
+        //            writer.WriteLine("[InternetShortcut]");
+        //            writer.WriteLine("URL=file:///" + app);
+        //            writer.WriteLine("IconIndex=0");
+        //            string icon = Application.StartupPath + "\\backup (3).ico";
+        //            writer.WriteLine("IconFile=" + icon);
+        //            writer.Flush();
+        //        }
+        //    }
+        //}
 
-        private void delappShortcutFromStartup()
-        {
-            string linkName = "ProgressQuestWrapperLink";
-            string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-            if (System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
-            {
-                System.IO.File.Delete(startDir + "\\" + linkName + ".url");
-            }
-        }
+        //private void delappShortcutFromStartup()
+        //{
+        //    string linkName = "ProgressQuestWrapperLink";
+        //    string startDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+        //    if (System.IO.File.Exists(startDir + "\\" + linkName + ".url"))
+        //    {
+        //        System.IO.File.Delete(startDir + "\\" + linkName + ".url");
+        //    }
+        //}
     }
 }

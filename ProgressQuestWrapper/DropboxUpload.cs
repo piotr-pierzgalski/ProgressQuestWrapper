@@ -43,7 +43,7 @@ namespace ProgressQuestWrapper
                 var ms = new MemoryStream();
                 uploadStream.CopyTo(ms);
                 uploadStream.Close();
-                return UploadNotAsync(dbx, "/Apps/ProgressQuestWrapper", _uploadFile, ms);
+                return UploadNotAsync(dbx, "/Apps/ProgressQuestWrapper", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _uploadFile), ms);
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace ProgressQuestWrapper
         {
             using (var response = await dbx.Files.DownloadAsync("/Apps/ProgressQuestWrapper" + "/" + _uploadFile))
             {
-                System.IO.File.WriteAllBytes(_uploadFile, await response.GetContentAsByteArrayAsync());
+                System.IO.File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _uploadFile), await response.GetContentAsByteArrayAsync());
             }
         }
 
