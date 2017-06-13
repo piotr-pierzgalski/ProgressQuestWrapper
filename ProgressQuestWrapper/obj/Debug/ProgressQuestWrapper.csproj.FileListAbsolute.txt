@@ -4,8 +4,6 @@ C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\Progr
 C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.csproj.GenerateResource.Cache
 C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.exe
 C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.pdb
-C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\Fithvael_2.0 [Spoltog].bak
-C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuest\Fithvael_2.0 [Spoltog].pq
 C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.exe.config
 C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.exe
 C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\ProgressQuestWrapper.pdb
@@ -37,3 +35,18 @@ C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\Pr
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\obj\Debug\ProgressQuestWrapper.pdb
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Dropbox.Api.dll
 C:\Users\Fithvael\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Dropbox.Api.xml
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\client_secret.json
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Dropbox.Api.dll
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.Auth.dll
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.Core.dll
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.dll
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.Drive.v2.dll
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.PlatformServices.dll
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Newtonsoft.Json.dll
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Dropbox.Api.xml
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.xml
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.Auth.xml
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.Core.xml
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Google.Apis.Drive.v2.xml
+C:\Users\piotr\Desktop\ProgressQuestWrapper\ProgressQuestWrapper\bin\Debug\Newtonsoft.Json.xml

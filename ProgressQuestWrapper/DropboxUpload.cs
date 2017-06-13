@@ -12,13 +12,14 @@ namespace ProgressQuestWrapper
     class DropboxUpload
     {
         string _uploadFile = "ProgressQuest/Fithvael_2.0 [Spoltog].pq";
+        private string discFile = "ProgressQuest\\Fithvael_2.0 [Spoltog].pq";
         DropboxClient dbx = new DropboxClient("TzSv4tHC040AAAAAAAABeD9kOiMFez3PVf_YX5pMnHowsmNtXVlUKRNFQgGmXX98");
 
         public async Task UploadFile()
         {
             try
             {
-                var uploadStream = new System.IO.FileStream(_uploadFile,
+                var uploadStream = new System.IO.FileStream(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, discFile),
                                             System.IO.FileMode.Open,
                                             System.IO.FileAccess.Read);
                 var ms = new MemoryStream();
@@ -37,13 +38,13 @@ namespace ProgressQuestWrapper
         {
             try
             {
-                var uploadStream = new System.IO.FileStream(_uploadFile,
+                var uploadStream = new System.IO.FileStream(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, discFile),
                                             System.IO.FileMode.Open,
                                             System.IO.FileAccess.Read);
                 var ms = new MemoryStream();
                 uploadStream.CopyTo(ms);
                 uploadStream.Close();
-                return UploadNotAsync(dbx, "/Apps/ProgressQuestWrapper", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _uploadFile), ms);
+                return UploadNotAsync(dbx, "/Apps/ProgressQuestWrapper", _uploadFile, ms);
             }
             catch (Exception ex)
             {
@@ -55,7 +56,7 @@ namespace ProgressQuestWrapper
         {
             using (var response = await dbx.Files.DownloadAsync("/Apps/ProgressQuestWrapper" + "/" + _uploadFile))
             {
-                System.IO.File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _uploadFile), await response.GetContentAsByteArrayAsync());
+                System.IO.File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, discFile), await response.GetContentAsByteArrayAsync());
             }
         }
 
