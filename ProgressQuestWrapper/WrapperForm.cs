@@ -37,7 +37,7 @@ namespace ProgressQuestWrapper
         {
             InitializeComponent();
 
-            var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+            var baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64);
             rkApp = baseKey.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
             ShowInTaskbar = false;
@@ -51,7 +51,7 @@ namespace ProgressQuestWrapper
             p.Start();
             p.WaitForInputIdle();
             progressQuestWindowHandle = FindWindowByCaption(IntPtr.Zero, "ProgressQuest - Fithvael_2.0 [Spoltog]");
-
+            
             RECT rct;
             if (!GetWindowRect(new HandleRef(wrapperPanel, progressQuestWindowHandle), out rct))
             {
