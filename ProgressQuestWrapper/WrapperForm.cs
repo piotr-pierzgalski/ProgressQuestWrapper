@@ -161,8 +161,9 @@ namespace ProgressQuestWrapper
         private void syncButton_Click(object sender, EventArgs e)
         {
             //GoogleDriveUpload.uploadFile();
-            DropboxUpload du = new DropboxUpload();
-            du.UploadFile();
+            //DropboxUpload du = new DropboxUpload();
+            //du.UploadFile();
+            PerformUpload();
         }
 
         private void wrapperPanel_SizeChanged(object sender, EventArgs e)
@@ -190,33 +191,75 @@ namespace ProgressQuestWrapper
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            status1.Text = "Now Saving...";
+            PerformUpload();
+            //try
+            //{
+            //    status1.Text = "Now Saving...";
 
-            var fileMetadata = (new DropboxUpload()).UploadFileNotAsync();
-            var newData = fileMetadata.ClientModified.ToLocalTime().ToLongTimeString();
-            var newHash = fileMetadata.ContentHash;
-            if (oldHash.Equals(string.Empty))
-            {
-                status2.Text = "Current server state: " + newData;
-                oldHash = newHash;
-            }
-            else if (oldHash.Equals(newHash))
-            {
-                status2.Text = "Current server state: " + newData;
-                status3.Text = "Save attempts: " + (++saveAttempts).ToString();
-            }
-            else
-            {
-                status2.Text = "Current server state: " + newData;
-                status3.Text = "Save attempts: 0";
-                saveAttempts = 0;
-                oldHash = newHash;
-            }
+            //    var fileMetadata = (new DropboxUpload()).UploadFileNotAsync();
+            //    var newData = fileMetadata.ClientModified.ToLocalTime().ToLongTimeString();
+            //    var newHash = fileMetadata.ContentHash;
+            //    if (oldHash.Equals(string.Empty))
+            //    {
+            //        status2.Text = "Current server state: " + newData;
+            //        oldHash = newHash;
+            //    }
+            //    else if (oldHash.Equals(newHash))
+            //    {
+            //        status2.Text = "Current server state: " + newData;
+            //        status3.Text = "Failed save attempts: " + (++saveAttempts).ToString();
+            //    }
+            //    else
+            //    {
+            //        status2.Text = "Current server state: " + newData;
+            //        status3.Text = "Failed save attempts: 0";
+            //        saveAttempts = 0;
+            //        oldHash = newHash;
+            //    }
 
-            status1.Text = string.Empty;
+            //    status1.Text = string.Empty;
+            //}
+            //catch (Exception ex)
+            //{
+            //    status3.Text = "Failed save attempts: " + (++saveAttempts).ToString();
+            //}
         }
 
+        private void PerformUpload()
+        {
+            try
+            {
+                status1.Text = "Now Saving...";
 
+                var fileMetadata = (new DropboxUpload()).UploadFileNotAsync();
+                var newData = fileMetadata.ClientModified.ToLocalTime().ToLongTimeString();
+                var newHash = fileMetadata.ContentHash;
+                if (oldHash.Equals(string.Empty))
+                {
+                    status2.Text = "Current server state: " + newData;
+                    oldHash = newHash;
+                }
+                else if (oldHash.Equals(newHash))
+                {
+                    status2.Text = "Current server state: " + newData;
+                    status3.Text =
+                        "Hash has not changed (file is the same), failed save attempts: " + (++saveAttempts).ToString();
+                }
+                else
+                {
+                    status2.Text = "Current server state: " + newData;
+                    status3.Text = "Failed save attempts: 0";
+                    saveAttempts = 0;
+                    oldHash = newHash;
+                }
+
+                status1.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                status3.Text = "Failed save attempts: " + (++saveAttempts).ToString();
+            }
+        }
 
 
         //private void appShortcutToStartup()
